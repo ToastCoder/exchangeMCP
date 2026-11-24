@@ -156,7 +156,8 @@ export class D1MemoryStore implements MemoryStore {
           updatedAt: r.updated_at,
           snippet: r.snippet,
           // bm25() is "lower is better" and negative; flip it so higher is better.
-          score: Math.round(-r.score * 1000) / 1000,
+          // Significant-figure rounding: tiny corpora yield very small bm25 values.
+          score: Number((-r.score).toPrecision(4)),
         }));
       }
     }
