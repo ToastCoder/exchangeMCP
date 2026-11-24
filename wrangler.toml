@@ -3,12 +3,15 @@ main = "src/index.ts"
 compatibility_date = "2026-11-01"
 compatibility_flags = ["nodejs_compat"]
 
-# Create the database with:  npx wrangler d1 create exchange
-# then paste the returned database_id below (do not commit real IDs if you prefer to keep them private).
+# D1 database, bound by NAME. There is intentionally no `database_id` here so the
+# ID never lands in this public repo: `wrangler deploy` and
+# `wrangler d1 migrations apply exchange --remote` look up the database called
+# "exchange" in your Cloudflare account and use its ID automatically.
+# Create it once with:  npx wrangler d1 create exchange
+# (If Wrangler ever writes a database_id back into this file, discard that change.)
 [[d1_databases]]
 binding = "DB"
 database_name = "exchange"
-database_id = "00000000-0000-0000-0000-000000000000"
 migrations_dir = "migrations"
 
 [vars]

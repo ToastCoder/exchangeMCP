@@ -66,7 +66,7 @@ npx wrangler login
 npx wrangler d1 create exchange
 ```
 
-Copy the `database_id` from the output into `wrangler.toml` (under `[[d1_databases]]`), replacing the all-zero placeholder.
+You don't need to copy the `database_id` anywhere. `wrangler.toml` binds the database by name (`database_name = "exchange"`), and Wrangler looks up the ID in your account when it deploys or runs remote migrations, so the ID never ends up in the repo. If you use a different name, change `database_name` to match. If Wrangler offers to write a `database_id` into `wrangler.toml`, discard that change.
 
 ### 2. Apply migrations
 
