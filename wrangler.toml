@@ -1,0 +1,20 @@
+name = "exchange-mcp"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Create the database with:  npx wrangler d1 create exchange
+# then paste the returned database_id below (do not commit real IDs if you prefer to keep them private).
+[[d1_databases]]
+binding = "DB"
+database_name = "exchange"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[vars]
+# Max memory body size in bytes (64 KB).
+MAX_BODY_BYTES = "65536"
+
+# Secrets (never put them in this file):
+#   npx wrangler secret put EXCHANGE_TOKEN
+# For local dev, copy .dev.vars.example to .dev.vars.
